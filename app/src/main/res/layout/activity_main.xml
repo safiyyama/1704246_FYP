@@ -7,16 +7,16 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnAddFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Food"
-        app:layout_constraintEnd_toStartOf="@+id/editText"
+        app:layout_constraintEnd_toStartOf="@+id/editFood"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="107dp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
