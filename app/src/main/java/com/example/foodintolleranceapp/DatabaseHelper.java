@@ -12,17 +12,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME="food_table";
     public static final String COLUMN_1 ="Food";
 
-    public DatabaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public DatabaseHelper(@Nullable Context context) //when this constructor is called the database is created
+    {
+        super(context, DATABASE_NAME, null, 1);
+        SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-
+    public void onCreate(SQLiteDatabase db) { //Here we can execute an SQL statements like create table
+        db.execSQL("create table " + TABLE_NAME +" (FOOD TEXT)");
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {//this drops the table if there are upgrade issues
+
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME);
+        onCreate(db);
 
     }
 }
