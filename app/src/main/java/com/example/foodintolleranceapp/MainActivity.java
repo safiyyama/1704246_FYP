@@ -2,6 +2,7 @@ package com.example.foodintolleranceapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,8 +17,9 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper myDb; //use this to create instance of databaseHelper method from the databaseHelper class
 
     EditText editBreakfast, editLunch, editDinner, editSnack;
-    Button btnAddFood;
+    Button btnAddFood, btnSymptomPage;
     String currentDate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,14 @@ public class MainActivity extends AppCompatActivity {
         btnAddFood = (Button)findViewById(R.id.btnAddFood);
 
         AddData();
+
+        btnSymptomPage = (Button) findViewById(R.id.btnSymptomPage);
+        btnSymptomPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSymptomPage();
+            }
+        });
     }
 
     public void AddData(){ //add functionality to the addFood button created on GUI
@@ -55,5 +65,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+    }
+
+    public void openSymptomPage(){
+        Intent intent = new Intent(this, SymptomPage.class);
+        startActivity(intent);
     }
 }
