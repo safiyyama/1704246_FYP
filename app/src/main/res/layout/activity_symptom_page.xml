@@ -6,4 +6,70 @@
     android:layout_height="match_parent"
     tools:context=".SymptomPage">
 
+    <EditText
+        android:id="@+id/editStomach"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Stomach Pains"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="114dp" />
+
+    <EditText
+        android:id="@+id/editSkin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=" Skin Rashes/Itching"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="413dp" />
+
+    <Button
+        android:id="@+id/btnAddSymptoms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Symptoms"
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="559dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How did you feel today? Give each symptom below a rating from 0-10, 10 being the highest, "
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="42dp" />
+
+    <EditText
+        android:id="@+id/editHeartburn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Heartburn"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="343dp" />
+
+    <EditText
+        android:id="@+id/editNausea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Nausea"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="274dp" />
+
+    <EditText
+        android:id="@+id/editBloat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Bloating/Gas"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="187dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

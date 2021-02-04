@@ -26,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) { //Here we can execute an SQL statements like create table
-        db.execSQL("create table " + TABLE_NAME +" (DATE TEXT PRIMARY KEY, BREAKFAST TEXT, LUNCH TEXT, DINNER TEXT, SNACK TEXT)");
+        db.execSQL("create table " + TABLE_NAME +" (DATE TEXT, BREAKFAST TEXT, LUNCH TEXT, DINNER TEXT, SNACK TEXT)");
     }
 
     @Override
