@@ -20,11 +20,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //Columns for symptom table
     public static final String COL_DATE = "Date";
     public static final String COL_NAUSEA= "Nausea";
-    public static final String COL_STOMACH = "Stomach Pains";
-    public static final String COL_BLOAT = "Bloat/Gas";
-    public static final String COL_HEART = "Heartburn";
-    public static final String COL_SKIN = "Skin Rashes/Itching";
-    public static final String COL_RATING = "Symptom Rating";
+    public static final String COL_STOMACH = "Stomach";
+    public static final String COL_BLOAT = "Bloat";
+    public static final String COL_HEART = "Heart";
+    public static final String COL_SKIN = "Skin";
+    public static final String COL_RATING = "Rating";
 
 
     public DatabaseHelper(@Nullable Context context) //when this constructor is called the database is created
@@ -36,7 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) { //Here we can execute an SQL statements like create table
         db.execSQL("create table " + TABLE_NAME +" (DATE TEXT, BREAKFAST TEXT, LUNCH TEXT, DINNER TEXT, SNACK TEXT)");
-        db.execSQL("create table " + TABLE2_NAME +" (DATE TEXT, NAUSEA INTEGER  , STOMACH INTEGER, BLOAT INTEGER, HEART INTEGER, SKIN INTEGER, RATING INTEGER)");
+        db.execSQL("create table " + TABLE2_NAME +" (DATE TEXT, NAUSEA INTEGER, STOMACH INTEGER, BLOAT INTEGER, HEART INTEGER, SKIN INTEGER, RATING INTEGER)");
     }
 
     @Override

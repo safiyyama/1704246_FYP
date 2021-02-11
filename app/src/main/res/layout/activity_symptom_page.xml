@@ -37,6 +37,7 @@
         android:text=" Skin Rashes/Itching"
         app:layout_constraintBottom_toTopOf="@+id/textRating"
         app:layout_constraintEnd_toStartOf="@+id/editHeart"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editBloat" />
 
