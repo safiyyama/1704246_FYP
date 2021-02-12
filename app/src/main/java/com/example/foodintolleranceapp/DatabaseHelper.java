@@ -63,7 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
     }
 
-    public boolean insertSymptomData(String date, String nausea, String stomach, String bloat, String heart, String skin, String rating){
+    public boolean insertSymptomData(String date, Integer nausea, Integer stomach, Integer bloat, Integer heart, Integer skin, Integer rating){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_DATE, date);

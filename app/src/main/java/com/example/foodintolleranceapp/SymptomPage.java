@@ -17,9 +17,10 @@ public class SymptomPage extends AppCompatActivity {
     DatabaseHelper myDb;
 
     EditText editNausea, editStomach, editBloat, editHeart, editSkin;
-    TextView textRating;
+    //TextView textRating;
     Button btnAddSymptoms;
     String currentDate;
+    Integer intNausea, intStomach, intBloat, intHeart, intSkin, intRating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,27 +38,33 @@ public class SymptomPage extends AppCompatActivity {
         editHeart = (EditText)findViewById(R.id.editHeart);
         editSkin = (EditText)findViewById(R.id.editSkin);
 
-        textRating = (TextView) findViewById(R.id.textRating);
+       // textRating = (TextView) findViewById(R.id.textRating);
+
 
         btnAddSymptoms = (Button)findViewById(R.id.btnAddSymptoms);
 
         AddSymptomData();
     }
 
+
     public void AddSymptomData(){
         btnAddSymptoms.setOnClickListener(
+
                 new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v)
+                    {
+
                         boolean isInserted = myDb.insertSymptomData(currentDate,
-                                editNausea.getText().toString(),
-                                editStomach.getText().toString(),
-                                editBloat.getText().toString(),
-                                editHeart.getText().toString(),
-                                editSkin.getText().toString(),
-                                textRating.getText().toString());
+                                intNausea = Integer.parseInt(editNausea.getText().toString()),
+                                intStomach = Integer.parseInt(editStomach.getText().toString()),
+                                intBloat = Integer.parseInt(editBloat.getText().toString()),
+                                intHeart = Integer.parseInt(editHeart.getText().toString()),
+                                intSkin = Integer.parseInt(editSkin.getText().toString()),
+                                intRating = (intNausea + intStomach + intBloat + intHeart + intSkin)/5);
                         if(isInserted=true)
-                            Toast.makeText(SymptomPage.this,"Your food entry has been added", Toast.LENGTH_LONG).show();
+                            Toast.makeText(SymptomPage.this, "Your Symptoms have been added", Toast.LENGTH_LONG).show();
+
                         else
                             Toast.makeText(SymptomPage.this,"There was a problem adding your entry", Toast.LENGTH_LONG).show();
                     }

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".SymptomPage">
 
+
     <EditText
         android:id="@+id/editStomach"
         android:layout_width="wrap_content"
@@ -16,7 +17,7 @@
         android:layout_marginEnd="137dp"
         android:layout_marginRight="137dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:text="Stomach Pains"
         app:layout_constraintBottom_toTopOf="@+id/editBloat"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +34,7 @@
         android:layout_marginRight="2dp"
         android:layout_marginBottom="31dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:text=" Skin Rashes/Itching"
         app:layout_constraintBottom_toTopOf="@+id/textRating"
         app:layout_constraintEnd_toStartOf="@+id/editHeart"
@@ -80,7 +81,7 @@
         android:layout_marginRight="132dp"
         android:layout_marginBottom="3dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:text="Heartburn"
         app:layout_constraintBottom_toTopOf="@+id/editSkin"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,7 +100,7 @@
         android:layout_marginRight="137dp"
         android:layout_marginBottom="20dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:text="Nausea"
         app:layout_constraintBottom_toTopOf="@+id/editStomach"
         app:layout_constraintEnd_toEndOf="parent"
@@ -116,7 +117,7 @@
         android:layout_marginRight="137dp"
         android:layout_marginBottom="5dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:text="Bloating/Gas"
         app:layout_constraintBottom_toTopOf="@+id/editHeart"
         app:layout_constraintEnd_toEndOf="parent"
