@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     DatabaseHelper myDb; //use this to create instance of databaseHelper method from the databaseHelper class
 
-    EditText editBreakfast, editLunch, editDinner, editSnack;
+    EditText editFood;
     Button btnAddFood, btnSymptomPage;
     String currentDate;
 
@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         currentDate = DateFormat.getDateInstance().format(calendar.getTime());
 
-        editBreakfast = (EditText)findViewById(R.id.editBreakfast);
-        editLunch = (EditText)findViewById(R.id.editLunch);
-        editDinner = (EditText)findViewById(R.id.editDinner);
-        editSnack = (EditText)findViewById(R.id.editSnack);
+        editFood = (EditText)findViewById(R.id.editFood);
+        //editLunch = (EditText)findViewById(R.id.editLunch);
+        //editDinner = (EditText)findViewById(R.id.editDinner);
+        //editSnack = (EditText)findViewById(R.id.editSnack);
 
         btnAddFood = (Button)findViewById(R.id.btnAddFood);
 
@@ -54,10 +54,8 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        boolean isInserted = myDb.insertData(currentDate, editBreakfast.getText().toString(),
-                                editLunch.getText().toString(),
-                                editDinner.getText().toString(),
-                                editSnack.getText().toString());
+                        boolean isInserted = myDb.insertData(currentDate, editFood.getText().toString());
+
                         if(isInserted=true)
                             Toast.makeText(MainActivity.this,"Your food entry has been added", Toast.LENGTH_LONG).show();
                         else

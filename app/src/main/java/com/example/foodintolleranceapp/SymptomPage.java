@@ -20,7 +20,8 @@ public class SymptomPage extends AppCompatActivity {
     //TextView textRating;
     Button btnAddSymptoms;
     String currentDate;
-    Integer intNausea, intStomach, intBloat, intHeart, intSkin, intRating;
+    Double intNausea, intStomach, intBloat, intHeart, intSkin, intRating;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,8 @@ public class SymptomPage extends AppCompatActivity {
     }
 
 
+
+
     public void AddSymptomData(){
         btnAddSymptoms.setOnClickListener(
 
@@ -54,14 +57,14 @@ public class SymptomPage extends AppCompatActivity {
                     @Override
                     public void onClick(View v)
                     {
-
                         boolean isInserted = myDb.insertSymptomData(currentDate,
-                                intNausea = Integer.parseInt(editNausea.getText().toString()),
-                                intStomach = Integer.parseInt(editStomach.getText().toString()),
-                                intBloat = Integer.parseInt(editBloat.getText().toString()),
-                                intHeart = Integer.parseInt(editHeart.getText().toString()),
-                                intSkin = Integer.parseInt(editSkin.getText().toString()),
+                                intNausea = Double.parseDouble(editNausea.getText().toString()),
+                                intStomach = Double.parseDouble(editStomach.getText().toString()),
+                                intBloat = Double.parseDouble(editBloat.getText().toString()),
+                                intHeart = Double.parseDouble(editHeart.getText().toString()),
+                                intSkin = Double.parseDouble(editSkin.getText().toString()),
                                 intRating = (intNausea + intStomach + intBloat + intHeart + intSkin)/5);
+
                         if(isInserted=true)
                             Toast.makeText(SymptomPage.this, "Your Symptoms have been added", Toast.LENGTH_LONG).show();
 
