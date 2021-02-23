@@ -12,12 +12,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME="food_intolerance.db";
     public static final String TABLE_NAME="food_eaten";
     public static final String TABLE2_NAME ="symptoms";
+
     public static final String COLUMN_1 = "ID";
     public static final String COLUMN_2 ="Date";
     public static final String COLUMN_3 ="Food";
-    //public static final String COLUMN_4 ="Lunch";
-   // public static final String COLUMN_5 ="Dinner";
-   // public static final String COLUMN_6 ="Snack";
+
     //Columns for symptom table
     public static final String COL_DATEID = "DateID";
     public static final String COL_NAUSEA= "Nausea";
@@ -26,6 +25,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_HEART = "Heart";
     public static final String COL_SKIN = "Skin";
     public static final String COL_RATING = "Rating";
+
+    //create a view using columns from both tables
+    public static final String VIEW_NAME="vwFoodByRating";
 
 
     public DatabaseHelper(@Nullable Context context) //when this constructor is called the database is created
@@ -36,8 +38,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) { //Here we can execute an SQL statements like create table
-        db.execSQL("create table " + TABLE2_NAME +" (DATEID TEXT PRIMARY KEY, NAUSEA INTEGER, STOMACH INTEGER, BLOAT INTEGER, HEART INTEGER, SKIN INTEGER, RATING FLOAT)");
+        db.execSQL("create table " + TABLE2_NAME +" (DATEID TEXT PRIMARY KEY, NAUSEA INTEGER, STOMACH INTEGER, BLOAT INTEGER, HEART INTEGER, SKIN INTEGER, RATING DOUBLE)");
         db.execSQL("create table " + TABLE_NAME +" (ID INTEGER PRIMARY KEY AUTOINCREMENT, FOOD TEXT, DATE TEXT, FOREIGN KEY (DATE) REFERENCES TABLE2_NAME (DATEID))");
+
+
+        db.execSQL("CREATE VIEW "+VIEW_NAME+
+                        " AS SELECT "+TABLE_NAME+"."+COLUMN_2+" AS DATE,"+
+                        " "+TABLE_NAME+"."+COLUMN_3+","+
+                        " "+TABLE2_NAME+"."+COL_RATING+""+
+                        " FROM "+TABLE2_NAME+" JOIN "+TABLE_NAME+
+                        " ON "+TABLE_NAME+"."+COLUMN_2+" ="+TABLE2_NAME+"."+COL_DATEID);
+
 
         //insert test data into food_eaten table, 10 days of logging food from 14 feb - 23 feb
        db.execSQL("INSERT INTO " + TABLE_NAME+ "(FOOD, DATE) VALUES ('cereal', 'Feb 14, 2021')");
@@ -102,8 +113,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 22, 2021', 2, 2, 2, 2, 2, 2.0)");
         db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 23, 2021', 5, 3, 4, 3, 4, 3.8)");
 
-
-
     }
 
     @Override
@@ -111,9 +120,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE2_NAME);
+        db.execSQL("DROP VIEW IF EXISTS "+ VIEW_NAME);
         onCreate(db);
 
     }
+
 
     public boolean insertData(String date, String food){
         SQLiteDatabase db = this.getWritableDatabase();
