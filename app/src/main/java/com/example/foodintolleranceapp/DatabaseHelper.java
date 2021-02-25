@@ -2,10 +2,14 @@ package com.example.foodintolleranceapp;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -38,7 +42,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) { //Here we can execute an SQL statements like create table
-        db.execSQL("create table " + TABLE2_NAME +" (DATEID TEXT PRIMARY KEY, NAUSEA INTEGER, STOMACH INTEGER, BLOAT INTEGER, HEART INTEGER, SKIN INTEGER, RATING DOUBLE)");
+        db.execSQL("create table " + TABLE2_NAME +" (DATEID TEXT PRIMARY KEY, NAUSEA INTEGER, STOMACH INTEGER, BLOAT INTEGER, HEART INTEGER, SKIN INTEGER, RATING INTEGER)");
         db.execSQL("create table " + TABLE_NAME +" (ID INTEGER PRIMARY KEY AUTOINCREMENT, FOOD TEXT, DATE TEXT, FOREIGN KEY (DATE) REFERENCES TABLE2_NAME (DATEID))");
 
 
@@ -157,5 +161,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         else
             return true;
+    }
+
+   public double getAverageRating(){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+       double avg =0;
+       Cursor avgCursor = db.rawQuery("select (AVG(Rating)) from "+VIEW_NAME,null);
+
+       if( avgCursor != null){
+            avgCursor.moveToFirst();
+            avg = avgCursor.getDouble(0);
+        }
+        avgCursor.close();
+        return avg;
+
+   }
+
+
+    public List<String> getResults(){
+        SQLiteDatabase db= this.getReadableDatabase();
+        //
+        List<String> returnList = new ArrayList<>();
+       double avg = this.getAverageRating();
+
+        String[] columns = new String[]{COLUMN_3, COL_RATING};
+        String where = "Rating>="+avg;
+        String groupBy = "Food";
+        String orderBy = "COUNT(Food) DESC";
+        Cursor resultCursor = db.query(VIEW_NAME, columns, where, null, groupBy, null, orderBy, null );
+
+        if (resultCursor.moveToFirst()){
+
+            do{
+
+                String foodName = resultCursor.getString(0);
+                returnList.add(foodName);
+
+            } while (resultCursor.moveToNext());
+
+        }
+        else
+        {
+
+        }
+        resultCursor.close();
+        return returnList;
+
+
+
     }
 }

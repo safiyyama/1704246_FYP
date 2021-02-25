@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper myDb; //use this to create instance of databaseHelper method from the databaseHelper class
 
     EditText editFood;
-    Button btnAddFood, btnSymptomPage;
+    Button btnAddFood, btnSymptomPage, btnResultsPage;
     String currentDate;
 
 
@@ -47,6 +47,15 @@ public class MainActivity extends AppCompatActivity {
                 openSymptomPage();
             }
         });
+
+        btnResultsPage = (Button)findViewById(R.id.btnResultsPage);
+        btnResultsPage.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+               openResultsPage();
+            }
+        });
     }
 
     public void AddData(){ //add functionality to the addFood button created on GUI
@@ -68,5 +77,10 @@ public class MainActivity extends AppCompatActivity {
     public void openSymptomPage(){
         Intent intent = new Intent(this, SymptomPage.class);
         startActivity(intent);
+    }
+
+    public void openResultsPage(){
+        Intent intent2 = new Intent(this, ResultsPage.class);
+        startActivity(intent2);
     }
 }
