@@ -2,6 +2,7 @@ package com.example.foodintolleranceapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +19,7 @@ public class SymptomPage extends AppCompatActivity {
 
     EditText editNausea, editStomach, editBloat, editHeart, editSkin;
     //TextView textRating;
-    Button btnAddSymptoms;
+    Button btnAddSymptoms, btnHome2;
     String currentDate;
     Double intNausea, intStomach, intBloat, intHeart, intSkin, intRating;
 
@@ -45,6 +46,15 @@ public class SymptomPage extends AppCompatActivity {
         btnAddSymptoms = (Button)findViewById(R.id.btnAddSymptoms);
 
         AddSymptomData();
+
+        btnHome2 = (Button)findViewById(R.id.btnHome2);
+        btnHome2.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                openHomePage();
+            }
+        });
     }
 
 
@@ -73,5 +83,10 @@ public class SymptomPage extends AppCompatActivity {
                     }
                 }
         );
+    }
+
+    public void openHomePage(){
+        Intent intent4 = new Intent(this, HomePage.class);
+        startActivity(intent4);
     }
 }

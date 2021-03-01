@@ -86,5 +86,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
+    <Button
+        android:id="@+id/btnHome1"
+        android:layout_width="214dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginLeft="105dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginRight="92dp"
+        android:layout_marginBottom="75dp"
+        android:background="@drawable/button2"
+        android:fontFamily="@font/nirmala"
+        android:text="Back to Home"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddFood" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
