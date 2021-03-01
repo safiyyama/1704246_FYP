@@ -32,30 +32,28 @@ public class MainActivity extends AppCompatActivity {
         currentDate = DateFormat.getDateInstance().format(calendar.getTime());
 
         editFood = (EditText)findViewById(R.id.editFood);
-        //editLunch = (EditText)findViewById(R.id.editLunch);
-        //editDinner = (EditText)findViewById(R.id.editDinner);
-        //editSnack = (EditText)findViewById(R.id.editSnack);
+
 
         btnAddFood = (Button)findViewById(R.id.btnAddFood);
 
         AddData();
 
-        btnSymptomPage = (Button) findViewById(R.id.btnSymptomPage);
-        btnSymptomPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openSymptomPage();
-            }
-        });
+        //btnSymptomPage = (Button) findViewById(R.id.btnSymptomPage);
+       // btnSymptomPage.setOnClickListener(new View.OnClickListener() {
+           // @Override
+           // public void onClick(View v) {
+             //   openSymptomPage();
+          //  }
+      //  });
 
-        btnResultsPage = (Button)findViewById(R.id.btnResultsPage);
-        btnResultsPage.setOnClickListener(new View.OnClickListener(){
+       // btnResultsPage = (Button)findViewById(R.id.btnResultsPage);
+      //  btnResultsPage.setOnClickListener(new View.OnClickListener(){
 
-            @Override
-            public void onClick(View v){
-               openResultsPage();
-            }
-        });
+        //    @Override
+          //  public void onClick(View v){
+              // openResultsPage();
+         //   }
+       // });
     }
 
     public void AddData(){ //add functionality to the addFood button created on GUI
