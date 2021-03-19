@@ -18,7 +18,7 @@ public class SymptomPage extends AppCompatActivity {
     DatabaseHelper myDb;
 
     EditText editNausea, editStomach, editBloat, editHeart, editSkin;
-    //TextView textRating;
+    TextView avgRating;
     Button btnAddSymptoms, btnHome2;
     String currentDate;
     Double intNausea, intStomach, intBloat, intHeart, intSkin, intRating;
@@ -40,7 +40,7 @@ public class SymptomPage extends AppCompatActivity {
         editHeart = (EditText)findViewById(R.id.editHeart);
         editSkin = (EditText)findViewById(R.id.editSkin);
 
-       // textRating = (TextView) findViewById(R.id.textRating);
+       avgRating = (TextView) findViewById(R.id.avgRating);
 
 
         btnAddSymptoms = (Button)findViewById(R.id.btnAddSymptoms);
@@ -75,10 +75,9 @@ public class SymptomPage extends AppCompatActivity {
                                 intSkin = Double.parseDouble(editSkin.getText().toString()),
                                 intRating = (intNausea + intStomach + intBloat + intHeart + intSkin)/5);
 
-                        if(isInserted=true)
-                            Toast.makeText(SymptomPage.this, "Your Symptoms have been added", Toast.LENGTH_LONG).show();
-
-                        else
+                        if(isInserted=true) {
+                            avgRating.setText(intRating.toString());
+                        } else
                             Toast.makeText(SymptomPage.this,"There was a problem adding your entry", Toast.LENGTH_LONG).show();
                     }
                 }
