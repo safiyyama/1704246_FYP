@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class HomePage extends AppCompatActivity {
 
-    Button btnResultsPage, btnFoodPage, btnSymptomsPage;
+    Button btnResultsPage, btnFoodPage, btnSymptomsPage, btnGraph;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,16 @@ public class HomePage extends AppCompatActivity {
              }
 
          });
+
+         btnGraph = (Button)findViewById(R.id.btnGraph);
+        btnGraph.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                openGraphPage();
+            }
+
+        });
     }
 
     public void openFoodPage(){
@@ -61,6 +71,11 @@ public class HomePage extends AppCompatActivity {
     public void openResultsPage(){
         Intent intent2 = new Intent(this, ResultsPage.class);
         startActivity(intent2);
+    }
+
+    public void openGraphPage(){
+        Intent intent7 = new Intent(this, SymptomGraph.class);
+        startActivity(intent7);
     }
 
 

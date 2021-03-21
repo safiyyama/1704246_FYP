@@ -106,16 +106,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO " + TABLE_NAME+ "(FOOD, DATE) VALUES ('roast chicken', 'Feb 23, 2021')");
 
         //insert test data into symptoms table, 10 days of logging symptoms from 14 feb  - 23 feb
-        db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 14, 2021', 2, 3, 0, 7, 5, 3.4)");
-        db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 15, 2021', 4, 5, 4, 3, 3, 3.8)");
-        db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 16, 2021', 2, 2, 1, 5, 4, 2.8)");
-        db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 17, 2021', 2, 0, 1, 1, 2, 1.2)");
-        db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 18, 2021', 1, 1, 3, 2, 2, 1.8)");
-        db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 19, 2021', 4, 3, 5, 6, 5, 4.6)");
-        db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 20, 2021', 3, 2, 1, 3, 2, 2.2)");
-        db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 21, 2021', 4, 3, 4, 4, 3, 3.6)");
-        db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 22, 2021', 2, 2, 2, 2, 2, 2.0)");
-        db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 23, 2021', 5, 3, 4, 3, 4, 3.8)");
+       // db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 14, 2021', 2, 3, 0, 7, 5, 3.4)");
+        //db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 15, 2021', 4, 5, 4, 3, 3, 3.8)");
+        //db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 16, 2021', 2, 2, 1, 5, 4, 2.8)");
+        //db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 17, 2021', 2, 0, 1, 1, 2, 1.2)");
+        //db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 18, 2021', 1, 1, 3, 2, 2, 1.8)");
+        //db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 19, 2021', 4, 3, 5, 6, 5, 4.6)");
+        //db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 20, 2021', 3, 2, 1, 3, 2, 2.2)");
+        //db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 21, 2021', 4, 3, 4, 4, 3, 3.6)");
+        //db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 22, 2021', 2, 2, 2, 2, 2, 2.0)");
+        //db.execSQL("INSERT INTO " + TABLE2_NAME+ "(DATEID, NAUSEA, STOMACH, BLOAT, HEART, SKIN, RATING) VALUES ('Feb 23, 2021', 5, 3, 4, 3, 4, 3.8)");
 
     }
 
@@ -146,7 +146,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
     }
 
-    public boolean insertSymptomData(String dateid, Double nausea, Double stomach, Double bloat, Double heart, Double skin, Double rating){
+    public boolean insertSymptomData(Long dateid, Double nausea, Double stomach, Double bloat, Double heart, Double skin, Double rating){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_DATEID, dateid);

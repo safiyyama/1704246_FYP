@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class SymptomPage extends AppCompatActivity {
 
@@ -20,7 +21,7 @@ public class SymptomPage extends AppCompatActivity {
     EditText editNausea, editStomach, editBloat, editHeart, editSkin;
     TextView avgRating;
     Button btnAddSymptoms, btnHome2;
-    String currentDate;
+    Long currentDate;
     Double intNausea, intStomach, intBloat, intHeart, intSkin, intRating;
 
 
@@ -32,7 +33,7 @@ public class SymptomPage extends AppCompatActivity {
         myDb = new DatabaseHelper(this);
 
         Calendar calendar = Calendar.getInstance();
-        currentDate = DateFormat.getDateInstance().format(calendar.getTime());
+        currentDate = new Date().getTime();
 
         editNausea = (EditText)findViewById(R.id.editNausea);
         editStomach = (EditText)findViewById(R.id.editStomach);
